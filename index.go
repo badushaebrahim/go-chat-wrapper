@@ -52,6 +52,11 @@ type Response struct {
 func main() {
 	r := gin.Default()
 	r.POST("/generate-content", generateContent)
+	r.GET("/api-key", func(c *gin.Context) {
+		apiKey := os.Getenv("API_KEY")
+		c.JSON(http.StatusOK, gin.H{"apiKey": apiKey})
+	apiKey := os.Getenv("API_KEY")
+	fmt.Println(apiKey)
 	r.Run(":8080")
 }
 
